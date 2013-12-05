@@ -124,3 +124,16 @@ exports.language = function(base) {
 
   return exports.pick(choices);
 };
+
+var timezones = require('./data/timezones');
+
+exports.timezone = function(continent) {
+  var choices = timezones.names;
+  if (continent) {
+    choices = choices.filter(function(zone) {
+      return zone.split('/')[0] === continent;
+    });
+  }
+
+  return exports.pick(choices);
+};
